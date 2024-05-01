@@ -17,15 +17,16 @@ def inicio2():
     intento = 3
     co = 3
     for i in range(intento):
+        print("-" * 30)
+        x = int(input("Digite su cedula para iniciar sesion: "))
+        xx = int(input("Ingrese su contrase;a: "))
+        print("-" * 30)
         if ((x in cuenta) and (xx in password)):
             p1 = cuenta.index(x)
             p2 = password.index(xx)
             if p1 == p2:
                 print("Bienvenid@ a su cuenta")
                 menu()
-                x = int(input("Ingrese la opcion que desea: "))
-                while x <= 0 or x > 4:
-                    
                 break
             elif ((p1 != p2) or (p2 != p1)):
                 co -= 1
@@ -155,17 +156,6 @@ def consulta():
 def salir():
     print("chao")
 
-def ejecutar(x):
-    if x == 1:
-        consignar()
-    elif x == 2:
-        retirar()
-    elif x == 3:
-        consulta()
-    elif x == 4:
-        salir()
-    else:
-        print("esto no debe salir")
 
 
 
@@ -200,4 +190,18 @@ while True:
     xx = int(input("Ingrese su contrase;a: "))
     print("-" * 30)
     inicio2()
-    break
+    x = int(input("Ingrese la opcion que desea: "))
+    if 1 <= x <= 4:
+        if x == 1:
+            consignar()
+        elif x == 2:
+            retirar()
+        elif x == 3:
+            consulta()
+        elif x == 4:
+            salir()
+        else:
+            print("esto no debe salir")
+    else:
+        print("Opcion invalida, intentelo nuevamente.")
+        
