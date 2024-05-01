@@ -30,40 +30,37 @@ def inicio2():
                 print("Bienvenid@ a su cuenta")
                 menu()
                 break
-            elif p1 != p2:
+            elif ((p1 != p2) or (p2 != p1)):
                 co -= 1
-                print("Su contrase;a es incorrecta, intentelo nuevamente tiene", co, "intentos")
                 if co == 0:
                     print("No tiene mas intentos")
-            elif p2 != p1:
-                co -= 1
-                print("Su contrase;a es incorrecta, intentelo nuevamen tetiene", co, "intentos")
-                if co == 0:
-                    print("No tiene mas intentos")
+                elif co > 0:
+                    print("Su contrase;a es incorrecta, intentelo nuevamente tiene", co, "intentos")
+                else:
+                    print("Esto no debe salir")  
             else:
                 print("Esto no debe salir.")
+                
         elif ((x in cuenta) and (xx not in password)):
             co -= 1
-            print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
             if co == 0:
                 print("No tiene mas intentos")
-        elif ((x not in cuenta) and (xx in password)):
+            elif co > 0:
+                print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
+            else:
+                print("Esto no debe salir")
+        elif (((x not in cuenta) and (xx in password)) or ((x not in cuenta) and (xx not in password))):
             co -= 1
-            print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
             if co == 0:
                 print("No tiene mas intentos")
-        elif ((x not in cuenta) and (xx not in password)):
-            co -= 1
-            print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
-            if co == 0:
-                print("No tiene mas intentos")
+            elif co > 0:
+                print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
+            else:
+                print("Esto no debe salir")
+         
         else:
             print("Esto no debe salir")
             break
-
-
-
-
 
 
 
