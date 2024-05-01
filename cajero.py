@@ -151,7 +151,7 @@ def retirar():
 
 
 def consulta():
-    pp = plata.index(x and xx)
+    pp = plata.index(p1 and p2)
     print("Su saldo final es", plata[pp])
 
 
@@ -203,3 +203,4 @@ while True:
     else:
         print("Opcion invalida, intentelo nuevamente.")
         
+#guardado version 11
