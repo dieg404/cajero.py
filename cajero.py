@@ -79,8 +79,9 @@ def bloqueo():
 
 
 def consignar():
+    global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(x and xx)
+    pp = plata.index(p1 and p2)
     vc = int(input("Puede consignar maximo tres veces, cuantas veces desea realizar el proceso? "))
     if vc > 3:
         print("No puede realizar mas de 3 consignaciones, intentelo nuevamente.")
@@ -111,8 +112,9 @@ def consignar():
 
                 
 def retirar():
+    global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(x and xx)
+    pp = plata.index(p1 and p2)
     vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
     if vc > 2:
         print("No puede realizar mas de 2 retiros, intentelo nuevamente.")
@@ -185,20 +187,16 @@ print("CONTRASE:AS", password)
 print("PLATA", plata)
 
 while True:
-    print("-" * 30)
-    x = int(input("Digite su cedula para iniciar sesion: "))
-    xx = int(input("Ingrese su contrase;a: "))
-    print("-" * 30)
     inicio2()
-    x = int(input("Ingrese la opcion que desea: "))
-    if 1 <= x <= 4:
-        if x == 1:
+    xop = int(input("Ingrese la opcion que desea: "))
+    if 1 <= xop <= 4:
+        if xop == 1:
             consignar()
-        elif x == 2:
+        elif xop == 2:
             retirar()
-        elif x == 3:
+        elif xop == 3:
             consulta()
-        elif x == 4:
+        elif xop == 4:
             salir()
         else:
             print("esto no debe salir")
