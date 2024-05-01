@@ -18,17 +18,53 @@ def inicioc():
     c = 1
     co = 2
     while c <= 3:
+        print("-" * 30)
         x = int(input("Digite su cedula para iniciar sesion: "))
         xx = int(input("Ingrese su contrase;a: "))
-        if (x not in cuenta) or (xx not in password):
+        if ((x not in cuenta) and (xx not in password)):
             print("Su cuenta o contrase;a no estan registradas, intentelo uevamente tiene", co, "intentos")
             c += 1
             co -= 1
-        elif (x not in cuenta) and (xx not in password):
+        elif (x in cuenta) and (xx in password):
+            for i in range(len(cuenta), len(password)):
+                if cuenta[i] == password[i]:
+                    print("Hola")
+                    break
+                elif cuenta[i] != password[i]:
+                    print("Su contrase;a es incorrecta, intentelo nuevamente. ")
+                else:
+                    print("Hay algo aml en el codigo.")  
+        
+        else: 
+            print("Hay algo aml en el codigo.")
+
+
+            
+def inicioc():
+    c = 1
+    co = 2
+    while c <= 3:
+        x = int(input("Digite su cedula para iniciar sesion: "))
+        xx = int(input("Ingrese su contrase;a: "))
+        if (x not in cuenta) and (xx not in password):
+            print("Su cuenta o contrase;a no estan registradas, intentelo uevamente tiene", co, "intentos")
+            c += 1
+            co -= 1
+        elif (x in cuenta) and (xx not in password):
+            print("Su cuenta o contrase;a no estan registradas, intentelo uevamente tiene", co, "intentos")
+            c += 1
+            co -= 1
+
+        elif (x not in cuenta) and (xx in password):
+            print("Su cuenta o contrase;a no estan registradas, intentelo uevamente tiene", co, "intentos")
+            c += 1
+            co -= 1
+
+        elif (x in cuenta) and (xx in password):
             for i in range(len(password)):
-                if password[i] == cuenta[i]:
+                if cuenta[i] == password[i]:
                     print(menu())
-                elif password[i] != cuenta[i]:
+                elif cuenta[i] != password[i]:
                     print("mal")
                 else:
                     print("Hay algo aml en el codigo.")
@@ -52,6 +88,8 @@ while b <= x1:
     px = int(input(f"Digite la contrase;a de la cuenta numero {b}: "))
     password.append(px)
     b += 1
-inicioc()
+print("CUENTAS", cuenta)
+print("CONTRASE:AS", password)
 
+inicioc()
 inicio()
