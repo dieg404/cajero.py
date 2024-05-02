@@ -89,7 +89,7 @@ def consignar():
     vc = int(input("Puede consignar maximo tres veces, cuantas veces desea realizar el proceso? "))
     while c <= 3:
         if vc > 3:
-            print("No se puede realizar mas de tres intentos, intentelo nuevamente.")
+            print("No se puede realizar mas de tres consignaciones, intentelo nuevamente.")
             print("-" * 30)
             break
         elif vc <= 3:
@@ -97,7 +97,11 @@ def consignar():
             print(f"Su saldo es {plata[pp]}")
             valor = int(input("Ingrese cuanta plata desea consignar, valor maximo que puede tener en su cuenta es de 10000000: "))
             print("-" * 30)
-            if valor > 10000000:
+
+            if plata[pp] >= 10000000:
+                print("Su cuenta llego al limite de plata. ")
+                break
+            elif valor > 10000000:
                 print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente")
             elif valor == 10000000:
                 plata[pp] += valor
@@ -107,12 +111,17 @@ def consignar():
             elif 0 < valor <= 10000000:
                 plata[pp] += valor
                 if plata[pp] > 10000000:
-                    print("Su consignacion", valor, "excede los 10000000, intentelo nuevamente.")
+                    print("Su consignacion", valor, "excede los 10000000.")
                     plata[pp] -= valor
-                    c += 1
+                    print("Tu saldo final es", plata[pp])
+                    bloqueo()
+                    break
                 elif plata[pp] <= 10000000:
                     print(f"Consigno {valor}, su saldo actual es de {plata[pp]}.")
                     print("-" * 30)
+                    if plata[pp] >= 10000000:
+                        print("Su cuenta llego al limite de plata. ")
+                        break
                     c += 1
                 else:
                     print("esto no debe salir. 4")
@@ -126,9 +135,31 @@ def retirar():
     global plata, cuenta, x, xx, password, p1, p2
     valor = 0
     pp = p1
+    c = 0
     vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
-    for i in range(vc):
-        if pp == p1:
+    while c <= 2:
+        if vc > 2:
+            print("No se puede realizar mas de dos retiros, intentelo nuevamente")
+            print("-" * 30)
+            break
+        elif vc <= 3:
+            print("-" * 30)
+            print(f"Su saldo es {plata[pp]}")
+            valor = int(input("Ingrese cuanta plata desea retirar, valor maximo que puede retirar de su cuenta es de 3000000: "))
+            print("-" * 30)
+            if valor > 3000000:
+                print("No puede hacer retiros mayores a 3000000, intentelo nuevamente")
+            elif valor == 3000000:
+                plata[pp] -= valor
+                print(f"Retiro {valor}, su saldo actual es de {plata[pp]} ya no puede retirar mas plata, que pase buen dia.")
+                print("-" * 30)
+                break
+            elif 0 < valor <= 3000000:
+                plata[pp] -= valor
+                if plata[pp] > plata[pp]:
+                    print("No tiene tanta plata para realizar su retiro de", valor)
+
+
             print(f"Su saldo inicial es {plata[pp]}")
             valor = int(input("Ingrese cuanta plata desea retirar, valor maximo 3000000."))
             if valor > 3000000:
@@ -208,5 +239,5 @@ while True:
     
     
         
-#guardado version 13
+#guardado version 14
 
