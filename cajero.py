@@ -4,6 +4,7 @@ x = None
 xx = None
 p1 = None
 p2 = None
+xop = None
 
 def inicio():
     print("-" * 30)
@@ -26,6 +27,9 @@ def inicio2():
             if p1 == p2:
                 print("Bienvenid@ a su cuenta")
                 menu()
+                xop = int(input("Ingrese la opcion que desea: "))
+                print("-" * 30)
+                ejecutar(xop)
                 break
             elif ((p1 != p2) or (p2 != p1)):
                 co -= 1
@@ -80,38 +84,50 @@ def bloqueo():
 def consignar():
     global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(x)
+    pp = p1
+    c = 0
     vc = int(input("Puede consignar maximo tres veces, cuantas veces desea realizar el proceso? "))
-    while vc >= 1 and vc <=3:
-        if pp == p1:
-            print(f"Su saldo inicial es {plata[pp]}")
+    while c <= 3:
+        if vc > 3:
+            print("No se puede realizar mas de tres intentos, intentelo nuevamente.")
+            print("-" * 30)
+            break
+        elif vc <= 3:
+            print("-" * 30)
+            print(f"Su saldo es {plata[pp]}")
             valor = int(input("Ingrese cuanta plata desea consignar, valor maximo que puede tener en su cuenta es de 10000000: "))
+            print("-" * 30)
             if valor > 10000000:
-                print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente:")
+                print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente")
             elif valor == 10000000:
                 plata[pp] += valor
                 print(f"Consigno {valor}, su saldo actual es de {plata[pp]} ya no puede consignar mas plata, que pase buen dia. ")
+                print("-" * 30)
                 break
             elif 0 < valor <= 10000000:
-                if valor <= 10000000:
-                    plata[pp] += valor
-                    print(f"Consigno {valor}, su saldo actua es de {plata[pp]}.")
-                elif valor > 10000000:
+                plata[pp] += valor
+                if plata[pp] > 10000000:
                     print("Su consignacion", valor, "excede los 10000000, intentelo nuevamente.")
+                    plata[pp] -= valor
+                    c += 1
+                elif plata[pp] <= 10000000:
+                    print(f"Consigno {valor}, su saldo actual es de {plata[pp]}.")
+                    print("-" * 30)
+                    c += 1
                 else:
-                        print("Esto no debe salir. 3")
+                    print("esto no debe salir. 4")
             else:
-                    print("Esto no debe salir. 2")
+                print("Esto no debe salir. 2")
         else:
-            print("Esto no debe salir. 1")
+            print("Esto no debe salir. 0")
 
 
 def retirar():
     global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(x)
+    pp = p1
     vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
-    while vc >= 1 and vc <=2:
+    for i in range(vc):
         if pp == p1:
             print(f"Su saldo inicial es {plata[pp]}")
             valor = int(input("Ingrese cuanta plata desea retirar, valor maximo 3000000."))
@@ -137,13 +153,28 @@ def retirar():
 
 def consulta():
     global plata, cuenta, x, xx, password, p1, p2
-    pp = plata.index(p1 and p2)
+    pp = p1
     print("Su saldo final es", plata[pp])
 
 
 def salir():
     print("chao")
 
+
+def ejecutar(xop):
+    if 1 <= xop <= 4:
+        if xop == 1:
+            consignar()
+        elif xop == 2:
+            retirar()
+        elif xop == 3:
+            consulta()
+        elif xop == 4:
+            salir()
+        else:
+            print("esto no debe salir")
+    else:
+        print("Opcion invalida, intentelo nuevamente.")
 
 
 
@@ -174,21 +205,8 @@ print("PLATA", plata)
 
 while True:
     inicio2()
-    xop = int(input("Ingrese la opcion que desea: "))
-    if 1 <= xop <= 4:
-        if xop == 1:
-            consignar()
-        elif xop == 2:
-            retirar()
-        elif xop == 3:
-            consulta()
-        elif xop == 4:
-            salir()
-        else:
-            print("esto no debe salir")
-    else:
-        print("Opcion invalida, intentelo nuevamente.")
+    
+    
         
-#guardado version 12
-
+#guardado version 13
 
