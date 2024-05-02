@@ -155,31 +155,19 @@ def retirar():
                 print("-" * 30)
                 break
             elif 0 < valor <= 3000000:
-                plata[pp] -= valor
-                if plata[pp] > plata[pp]:
+                if valor > plata[pp]:
                     print("No tiene tanta plata para realizar su retiro de", valor)
-
-
-            print(f"Su saldo inicial es {plata[pp]}")
-            valor = int(input("Ingrese cuanta plata desea retirar, valor maximo 3000000."))
-            if valor > 3000000:
-                print("No puede hacer retiros mayores a 3000000, intentelo nuevamente.")
-            elif valor == 3000000:
-                plata[pp] -= valor
-                print(f"Retiro {valor}, su saldo actual es de {plata[pp]} ya no puede retirar mas plata, que pase buen dia. ")
-                break
-            elif 0 < valor <= 3000000:
-                if valor <= 3000000:
-                    plata[pp] -= valor
-                    print(f"Retiro {valor}, su saldo actua es de {plata[pp]}.")
-                elif ((plata[pp] - valor) < plata[pp]):
-                    print("Su retiro", valor, "excede el valor que tiene en su cuenta, intentelo nuevamente.")
+                    c += 1
+                elif plata[pp] <= 3000000:
+                    print(f"retiro {valor}, su saldo actual es de {plata[pp]}.")
+                    print("-" * 30)
+                    c += 1
                 else:
-                        print("Esto no debe salir. 3")
+                    print("Esto no debe salir. 3 ")    
             else:
-                print("Esto no debe salir. 2")
+                print("Esto no debe salir. 2 ")
         else:
-            print("Esto no debe salir. 1")
+            print("Esto no debe salir. 1 ")
 
 
 def consulta():
@@ -239,5 +227,4 @@ while True:
     
     
         
-#guardado version 14
-
+#guardado version 15
