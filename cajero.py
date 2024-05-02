@@ -12,8 +12,7 @@ def inicio():
 
 
 def inicio2():
-    global x, xx
-    global p1, p2
+    global plata, cuenta, x, xx, password, p1, p2
     intento = 3
     co = 3
     for i in range(intento):
@@ -81,20 +80,19 @@ def bloqueo():
 def consignar():
     global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(p1)
+    pp = plata.index(x)
     vc = int(input("Puede consignar maximo tres veces, cuantas veces desea realizar el proceso? "))
-    while 1 <= vc <=3:
-        if p1 and p2 == pp:
+    while vc >= 1 and vc <=3:
+        if pp == p1:
             print(f"Su saldo inicial es {plata[pp]}")
-            valor = int(input("Ingrese cuanta plata desea consignar, valor maximo 10000000."))
+            valor = int(input("Ingrese cuanta plata desea consignar, valor maximo que puede tener en su cuenta es de 10000000: "))
             if valor > 10000000:
-                print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente.")
+                print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente:")
             elif valor == 10000000:
                 plata[pp] += valor
                 print(f"Consigno {valor}, su saldo actual es de {plata[pp]} ya no puede consignar mas plata, que pase buen dia. ")
                 break
             elif 0 < valor <= 10000000:
-                valor += valor
                 if valor <= 10000000:
                     plata[pp] += valor
                     print(f"Consigno {valor}, su saldo actua es de {plata[pp]}.")
@@ -106,14 +104,15 @@ def consignar():
                     print("Esto no debe salir. 2")
         else:
             print("Esto no debe salir. 1")
-                
+
+
 def retirar():
     global plata, cuenta, x, xx, password, p1, p2
     valor = 0
-    pp = plata.index(p1)
+    pp = plata.index(x)
     vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
-    while 1 <= vc <=2:
-        if p1 and p2 == pp:
+    while vc >= 1 and vc <=2:
+        if pp == p1:
             print(f"Su saldo inicial es {plata[pp]}")
             valor = int(input("Ingrese cuanta plata desea retirar, valor maximo 3000000."))
             if valor > 3000000:
@@ -126,50 +125,18 @@ def retirar():
                 if valor <= 3000000:
                     plata[pp] -= valor
                     print(f"Retiro {valor}, su saldo actua es de {plata[pp]}.")
-                elif plata[pp] - valor
-                    print("Su consignacion", valor, "excede los 10000000, intentelo nuevamente.")
+                elif ((plata[pp] - valor) < plata[pp]):
+                    print("Su retiro", valor, "excede el valor que tiene en su cuenta, intentelo nuevamente.")
                 else:
                         print("Esto no debe salir. 3")
+            else:
+                print("Esto no debe salir. 2")
         else:
             print("Esto no debe salir. 1")
 
 
-
-    if vc > 2:
-        print("No puede realizar mas de 2 retiros, intentelo nuevamente.")
-    elif 1 <= vc <= 2:
-        for i in range(vc):
-            if p1 and p2 == pp:
-                print(f"Su saldo es {cuenta[pp]}")
-                valor = int(input("Ingrese cuanta plata desea retirar, valor maximo 3000000."))
-                if valor > 3000000:
-                    print("No puede hacer retiros mayores a 3000000, intentelo nuevamente.")
-                elif valor == 3000000:
-                    pl = plata[pp]
-                    plr = pl - valor
-                    plata[pp] = plr
-                    print(f"Retiro {valor}, su saldo actua es de {plata[pp]} ya no puede retirar mas plata, que pase buen dia. ")
-                    break
-                elif valor > 0 and valor <= 3000000:
-                    valor -= valor
-                    if valor <= 3000000:
-                        pl = plata[pp]
-                        plr = pl - valor
-                        plata[pp] = plr
-                        print(f"Retiro {valor}, su saldo actua es de {plata[pp]}.")
-                    elif valor > 3000000  :
-                        print("Su retiro", valor, "excede los 3000000, intentelo nuevamente.")
-                    elif valor > plata[pp]:
-                        print(f"Su saldo disponible es {plata[pp]} no se puede retirar {valor}, intentelo nuevamente.")
-                else:
-                    print("Esto no debe salir. 3")
-            else:
-                print("Esto no debe salir. 2")
-    else:
-        print("Esto no debe salir. 1")  
-
-
 def consulta():
+    global plata, cuenta, x, xx, password, p1, p2
     pp = plata.index(p1 and p2)
     print("Su saldo final es", plata[pp])
 
@@ -222,4 +189,6 @@ while True:
     else:
         print("Opcion invalida, intentelo nuevamente.")
         
-#guardado version 11
+#guardado version 12
+
+
