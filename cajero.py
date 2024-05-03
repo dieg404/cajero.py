@@ -19,7 +19,7 @@ def inicio2():
     for i in range(intento):
         print("-" * 30)
         x = int(input("Digite su cedula para iniciar sesion: "))
-        xx = int(input("Ingrese su contrase;a: "))
+        xx = int(input("Ingrese su contraseña: "))
         print("-" * 30)
         if ((x in cuenta) and (xx in password)):
             p1 = cuenta.index(x)
@@ -37,7 +37,7 @@ def inicio2():
                     print("No tiene mas intentos")
                     bloqueo()
                 elif co > 0:
-                    print("Su contrase;a es incorrecta, intentelo nuevamente tiene", co, "intentos")
+                    print("Su contraseña es incorrecta, intentelo nuevamente tiene", co, "intentos")
                 else:
                     print("Esto no debe salir")  
             else:
@@ -49,7 +49,7 @@ def inicio2():
                 print("No tiene mas intentos")
                 bloqueo()
             elif co > 0:
-                print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
+                print("Su cuenta o contraseña no estan registradas, intentelo nuevamente tiene", co, "intentos")
             else:
                 print("Esto no debe salir")
         elif (((x not in cuenta) and (xx in password)) or ((x not in cuenta) and (xx not in password))):
@@ -58,7 +58,7 @@ def inicio2():
                 print("No tiene mas intentos")
                 bloqueo() 
             elif co > 0:
-                print("Su cuenta o contrase;a no estan registradas, intentelo nuevamente tiene", co, "intentos")
+                print("Su cuenta o contraseña no estan registradas, intentelo nuevamente tiene", co, "intentos")
             else:
                 print("Esto no debe salir")
          
@@ -252,19 +252,16 @@ print("-" * 30)
 while b <= x1:
     cx = int(input(f"Digite la cuenta numero {b}: "))
     cuenta.append(cx)
-    px = int(input(f"Digite la contrase;a de la cuenta numero {b}: "))
+    px = int(input(f"Digite la contraseña de la cuenta numero {b}: "))
     password.append(px)
     plata.append(cantidad)
 
     print("-" * 30)
     b += 1
-print("CUENTAS", cuenta)
-print("CONTRASE:AS", password)
-print("PLATA", plata)
 
 while True:
     inicio2()
     
     
         
-#guardado version 16
+#guardado version FINAL.
