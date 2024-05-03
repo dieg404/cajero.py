@@ -1,4 +1,4 @@
-import time
+import sys
 
 x = None
 xx = None
@@ -92,6 +92,38 @@ def consignar():
             print("No se puede realizar mas de tres consignaciones, intentelo nuevamente.")
             print("-" * 30)
             break
+        elif vc == 1:
+            print("-" * 30)
+            print(f"Su saldo es {plata[pp]}")
+            valor = int(input("Ingrese cuanta plata desea consignar, valor maximo que puede tener en su cuenta es de 10000000: "))
+            print("-" * 30)
+
+            if plata[pp] >= 10000000:
+                print("Su cuenta llego al limite de plata. ")
+                break
+            elif valor > 10000000:
+                print("No puede hacer consignaciones mayores a 10000000, intentelo nuevamente")
+            elif valor == 10000000:
+                plata[pp] += valor
+                print(f"Consigno {valor}, su saldo actual es de {plata[pp]} ya no puede consignar mas plata, que pase buen dia. ")
+                print("-" * 30)
+                break
+            elif 0 < valor <= 10000000:
+                plata[pp] += valor
+                if plata[pp] > 10000000:
+                    print("Su consignacion", valor, "excede los 10000000.")
+                    plata[pp] -= valor
+                    print("Tu saldo final es", plata[pp])
+                    bloqueo()
+                    break
+                elif plata[pp] <= 10000000:
+                    print(f"Consigno {valor}, su saldo actual es de {plata[pp]}.")
+                    print("-" * 30)
+                    break
+                else:
+                    print("esto no debe salir. 1.2")
+            else:
+                print("Esto no debe salir. 2") 
         elif vc <= 3:
             print("-" * 30)
             print(f"Su saldo es {plata[pp]}")
@@ -136,38 +168,43 @@ def retirar():
     valor = 0
     pp = p1
     c = 0
-    vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
-    while c <= 2:
-        if vc > 2:
-            print("No se puede realizar mas de dos retiros, intentelo nuevamente")
-            print("-" * 30)
-            break
-        elif vc <= 3:
-            print("-" * 30)
-            print(f"Su saldo es {plata[pp]}")
-            valor = int(input("Ingrese cuanta plata desea retirar, valor maximo que puede retirar de su cuenta es de 3000000: "))
-            print("-" * 30)
-            if valor > 3000000:
-                print("No puede hacer retiros mayores a 3000000, intentelo nuevamente")
-            elif valor == 3000000:
-                plata[pp] -= valor
-                print(f"Retiro {valor}, su saldo actual es de {plata[pp]} ya no puede retirar mas plata, que pase buen dia.")
+    if plata[pp] == 0:
+        print("Fondos insuficientes, intentelo nuevamente.")
+    elif plata[pp] > 0:
+        vc = int(input("Puede retirar maximo dos veces, cuantas veces desea realizar el proceso? "))
+        while c <= 2:
+            if vc > 2:
+                print("No se puede realizar mas de dos retiros, intentelo nuevamente")
                 print("-" * 30)
                 break
-            elif 0 < valor <= 3000000:
-                if valor > plata[pp]:
-                    print("No tiene tanta plata para realizar su retiro de", valor)
-                    c += 1
-                elif plata[pp] <= 3000000:
-                    print(f"retiro {valor}, su saldo actual es de {plata[pp]}.")
+            elif vc <= 3:
+                print("-" * 30)
+                print(f"Su saldo es {plata[pp]}")
+                valor = int(input("Ingrese cuanta plata desea retirar, valor maximo que puede retirar de su cuenta es de 3000000: "))
+                print("-" * 30)
+                if valor > 3000000:
+                    print("No puede hacer retiros mayores a 3000000, intentelo nuevamente")
+                elif valor == 3000000:
+                    plata[pp] -= valor
+                    print(f"Retiro {valor}, su saldo actual es de {plata[pp]} ya no puede retirar mas plata, que pase buen dia.")
                     print("-" * 30)
-                    c += 1
+                    break
+                elif 0 < valor <= 3000000:
+                    if valor > plata[pp]:
+                        print("No tiene tanta plata para realizar su retiro de", valor)
+                        c += 1
+                    elif plata[pp] <= 3000000:
+                        print(f"retiro {valor}, su saldo actual es de {plata[pp]}.")
+                        print("-" * 30)
+                        c += 1
+                    else:
+                        print("Esto no debe salir. 3 ")    
                 else:
-                    print("Esto no debe salir. 3 ")    
+                    print("Esto no debe salir. 2 ")
             else:
-                print("Esto no debe salir. 2 ")
-        else:
-            print("Esto no debe salir. 1 ")
+                print("Esto no debe salir. 1 ")
+    else:
+        print("Esto no debe salir.")
 
 
 def consulta():
@@ -177,7 +214,10 @@ def consulta():
 
 
 def salir():
-    print("chao")
+    print("-" * 30)
+    print("Gracias por usar Desfacol, si usted no pierde su plata nosotros la perdemos por usted :D")
+    print("-" * 30)
+    sys.exit()
 
 
 def ejecutar(xop):
